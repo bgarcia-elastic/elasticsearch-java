@@ -48,7 +48,7 @@ jobs:
 
         # For Snyk Open Source you must first set up the development environment for your application's dependencies
         # For example for Node
-        uses: snyk/actions/maven-3-jdk-17@master
+        uses: snyk/actions/gradle@master
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -57,12 +57,12 @@ jobs:
 
 
         # Runs Snyk Open Source (SCA) analysis and uploads result to Snyk.
-      - name: Snyk Open Source monitor
-        run: snyk test
+      #- name: Snyk Open Source monitor
+        #run: snyk test
 
 
         # Push the Snyk Code results into GitHub Code Scanning tab
-      - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: snyk-code.sarif
+     # - name: Upload result to GitHub Code Scanning
+        #uses: github/codeql-action/upload-sarif@v2
+        #with:
+          #sarif_file: snyk-code.sarif
