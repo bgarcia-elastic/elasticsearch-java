@@ -17,9 +17,7 @@
 # and fail PR checks, see https://github.com/snyk/actions/
 
 name: Snyk Security
-env:
-          # This is where you will need to introduce the Snyk API token created with your Snyk account
-  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
 
 on:
   push:
@@ -34,6 +32,9 @@ permissions:
 
 jobs:
   snyk:
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
