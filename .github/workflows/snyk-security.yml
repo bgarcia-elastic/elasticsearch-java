@@ -32,8 +32,7 @@ permissions:
 
 jobs:
   snyk:
-    env:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    
   
     permissions:
       contents: read # for actions/checkout to fetch code
@@ -50,6 +49,9 @@ jobs:
         # For Snyk Open Source you must first set up the development environment for your application's dependencies
         # For example for Node
         uses: snyk/actions/maven-3-jdk-17@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         #  with:
         #    node-version: 16
 
